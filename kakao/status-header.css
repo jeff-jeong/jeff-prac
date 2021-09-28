@@ -1,0 +1,42 @@
+.status-header{
+    
+    padding:25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+
+.status-header > a:first-child {
+    width:33%;
+    cursor: pointer;
+}
+
+.status-header > span {
+    display: flex;
+    justify-content: center;
+    width:33%;
+    font-size:24px;
+    font-weight: 700;
+}
+
+.status-header > div {
+    width:33%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.status-header a:last-child {
+    width:33%;
+    display: flex;
+    justify-content: flex-end;
+    cursor: pointer;
+}
+
+
+.status-header__icons i {
+    margin-left: 20px;
+    
+    
+}

@@ -1,0 +1,163 @@
+#chat-screen {
+    padding-top:100px;
+    height:500vh;
+    background-color: #A0C1D7;
+}
+
+#chat-screen .status-header {
+    padding-top:35px;
+    position:fixed;
+    top:0;
+    width:100%;
+    box-sizing: border-box;
+}
+
+
+#chat-screen .fa-chevron-left {
+    cursor: pointer;
+}
+
+.date{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    
+}
+
+.date span {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding:10px 15px;
+    border-radius: 20px;
+    color:white;
+    font-size:15px;
+    font-weight: 100;
+}
+
+.chat-main {
+    padding:25px;
+}
+
+.chat-row {
+    display: flex;
+    color:var(--grey8);
+    margin-bottom: 25px;
+    
+}
+
+.chat-row img {
+    width:50px;
+    height:50px;
+    border-radius: 15px;
+    margin-right:10px;
+}
+
+
+.chat-row__info-name{
+    margin-bottom:12px;
+
+}
+
+
+.chat-row__bubble-wrapper{
+    display: flex;
+    align-items: flex-end;
+}
+
+.chat-row__bubble {
+    background-color:white;
+    padding:12px;
+    border-radius: 15px;
+    border-top-left-radius: 0;
+    margin-right:6px;
+    font-size:20px;
+}
+
+.chat-row__bubble-time {
+    font-size:12px;
+}
+
+.row-right{
+    justify-content: flex-end;
+    
+}
+
+.row-right .chat-row__bubble-wrapper {
+    flex-direction: row-reverse;
+}
+
+.row-right .chat-row__bubble {
+    background-color: #fae100;
+    border-top-right-radius: 0;
+    border-top-left-radius: 15px;
+    margin-left:6px;
+}
+
+.chat-user-input{
+    display: flex;
+    align-items: center;
+    background-color: white;
+    padding:5px 15px;
+    color:var(--grey6);
+    position: fixed;
+    bottom: 0;
+    width:100%;
+    box-sizing: border-box;
+    
+}
+
+.chat-user-input > i {
+    width:10%;
+    font-size:26px;
+}
+
+.chat-user-input-section {
+    width:90%;
+    padding:0 3px 0 15px;
+    border : 1px solid var(--grey8);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.chat-user-input-section input {
+    height:40px;
+    
+}
+
+.chat-user-input-section input::placeholder {
+    color:var(--grey6);
+}
+
+.chat-user-input__icons {
+    display: flex;
+    align-items: center;
+}
+
+
+.chat-user-input__icons i {
+    margin-left:10px;
+}
+
+.chat-user-input__icons .fa-smile-beam {
+    font-size:24px;
+}
+
+.chat-user-input__icons i:last-child {
+    color: #fae100;
+    font-size:36px;
+    
+}
+
+@keyframes hideInput {
+    form {
+        
+    }
+    to {
+        transform: translateY(52px);
+    }
+}
+
+.chat-user-input-section input:focus {
+    animation: hideInput 1s linear forwards;
+}

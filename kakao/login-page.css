@@ -1,0 +1,53 @@
+
+
+.login-page__header{
+    padding:120px 50px;
+    text-align: center;
+}
+
+.login-page__header-title{
+    font-size:34px;
+    margin-bottom:20px;
+}
+
+.login-page__header-subtitle {
+    font-size:20px;
+    color:rgba(0, 0, 0, 0.4);
+    line-height: 26px;
+    font-weight : 400;
+}
+
+.login-page__form{
+    padding: 0 25px;
+}
+
+.login-page__form input {
+    box-sizing: border-box;
+    width:100%;
+    padding:20px 0 ;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+    font-size:24px;
+}
+
+.login-page__form input::placeholder {
+    color:rgba(0, 0, 0, 0.3);
+}
+
+.login-page__btns{
+    padding-top:40px;
+    text-align: center;
+}
+
+.login-page__btn {
+    width:100%;
+    background-color: #EEEEEE;
+    padding:20px 0;
+    margin-bottom:15px;
+    font-size:20px;
+    cursor: pointer;
+}
+
+.login-page__btn-find{
+    cursor:pointer;
+    padding: 10px 0;
+}
