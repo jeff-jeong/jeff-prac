@@ -1,0 +1,107 @@
+document.addEventListener("DOMContentLoaded", function (e) {
+  console.log("Everything has been loaded")
+
+  // 게임 시작
+  function start_game() {
+
+    // 화면에 뷰 잡아옴
+    let view = document.getElementById("view")
+
+    // 캐릭터 생성
+    let mj = document.createElement("div")
+
+    // 캐릭터에 id 부여
+    mj.setAttribute("id", "mj")
+
+    // 뷰에 캐릭터 집어넣음
+    view.appendChild(mj)
+
+    // 컨트롤 설정
+    document.addEventListener("keydown", function (e) {
+      // 모든 css 값 가져오기
+      let css_list = window.getComputedStyle(mj)
+      let view_css_list = window.getComputedStyle(view)
+
+      // top 값 설정
+      let top_value = parseInt(css_list["top"].replace("px", ""))
+      // left 값 설정
+      let left_value = parseInt(css_list["left"].replace("px", ""))
+      // 아이템 height 값 설정
+      let item_height = parseInt(css_list["height"].replace("px", ""))
+      // 뷰 height 값 설정
+      let view_height = parseInt(view_css_list["height"].replace("px", ""))
+      // 아이템 width 값 설정
+      let item_width = parseInt(css_list["width"].replace("px", ""))
+      // 뷰 width 값 설정
+      let view_width = parseInt(view_css_list["width"].replace("px", ""))
+
+      switch (e.code) {
+        case "ArrowDown":
+          // 키보드 화살표 아래 누르면 이거 실행
+
+          // 만약 top + height 값이 뷰 height 보다 크거나 같으면 에러
+          if (top_value + item_height >= view_height) {
+            alert("You can not go further!")
+          } else {
+            //아니면 7px씩 밑으로
+
+            if (view_height - (top_value + item_height) < 7) {
+              mj.style.top = top_value + view_height - (top_value + item_height) + "px"
+            } else {
+              mj.style.top = top_value + 7 + "px"
+            }
+          }
+          break;
+          case "ArrowUp":
+          // 키보드 화살표 위 누르면 이거 실행
+
+          // 만약 top 값이 0 보다 작거나 같으면 에러
+          if (top_value <= 0) {
+            alert("You can not go further!")
+          } else {
+            //아니면 7px씩 위로
+
+            if (top_value < 7) {
+              mj.style.top = 0 + "px"
+            } else {
+              mj.style.top = top_value - 7 + "px"
+            }
+          }
+          break;
+          case "ArrowRight":
+          // 키보드 화살표 위 누르면 이거 실행
+
+          // 만약 top 값이 0 보다 작거나 같으면 에러
+          if (left_value + item_width >= view_width) {
+            alert("You can not go further!")
+          } else {
+            //아니면 7px씩 위로
+
+            if (view_width - (left_value + item_width) < 7) {
+              mj.style.left = left_value + view_width - (left_value + item_width) + "px"
+            } else {
+              mj.style.left = left_value + 7 + "px"
+            }
+          }
+          break;
+          case "ArrowLeft":
+          // 키보드 화살표 위 누르면 이거 실행
+
+          // 만약 left 값이 0 보다 작거나 같으면 에러
+          if (left_value <= 0) {
+            alert("You can not go further!")
+          } else {
+            //아니면 7px씩 위로
+
+            if (left_value < 7) {
+              mj.style.right = 0 + "px"
+            } else {
+              mj.style.left = left_value - 7 + "px"
+            }
+          }
+          break;
+      }
+    })
+  }
+  start_game()
+})

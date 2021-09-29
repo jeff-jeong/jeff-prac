@@ -1,0 +1,18 @@
+body {
+    background-color: tomato;
+}
+
+#view {
+    background-color: teal;
+    width:100%;
+    height:300px;
+}
+
+#box {
+    width:30px;
+    height:30px;
+    background-color: purple;
+    top:0;
+    left:0;
+    position: absolute;
+}

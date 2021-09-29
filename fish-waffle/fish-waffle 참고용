@@ -1,0 +1,54 @@
+// 페이지 로드가 다 되면 실행
+document.addEventListener("DOMContentLoaded", function (e) {
+  // 다됨 로그
+  console.log("Contents have been loaded")
+
+  // frame이란 클래스를 가진 애들 다 잡아옴
+  var frame_list = document.getElementsByClassName("frame");
+
+  // for (var i = 0; i < frame_list.length; i++) {
+  //   console.log("Frame: ", frame_list[i])
+  // }
+
+
+  // 프래임 리스트를 룹을 돌림
+  for (const frame of frame_list) {
+    // console.log("Frame: ", frame)
+
+    // 각 프레임들에 클릭 이벤트 발생시 실행
+    frame.addEventListener("click", function (e) {
+      console.log(frame.textContent)
+
+      // 프레임의 글자가 비었거나 undefined 이면 실행
+      if (frame.textContent.includes("빔")) {
+        console.log("Empty")
+        frame.innerHTML = "앞면"
+      } else if (frame.textContent.includes("앞면")) {
+        console.log("뒤집을 때임")
+        frame.innerText = "뒷면"
+      } else if (frame.textContent.includes("뒷면")) {
+        console.log("가판대로 올릴 때임")
+        // 가판대 불러오기
+        var waffles = document.getElementById("waffles")
+        // 프레임에 있는 붕어빵 생성
+        var waffle = document.createElement("div")
+        waffle.innerHTML = "붕어빵"
+        waffles.appendChild(waffle)
+
+        frame.innerHTML = "빔"
+      }
+    })
+  }
+})
+
+
+Message vanilla
+
+
+
+
+
+
+
+
+
