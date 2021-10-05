@@ -46,14 +46,23 @@ document.addEventListener("DOMContentLoaded", function(e){
             
             break;
             case "ArrowRight" :
-            if(view_widht < box_width + box_left) {
+            if(view_widht <= box_width + box_left) {
                 alert("못가")
             } else if (view_widht - (box_left + box_width) < 7){
-                // box.style.left = view_widht + box_width - (box_left + box_width) + "px"
+                box.style.left = box_left + view_widht - (box_left + box_width) + "px"
             } else {
                 box.style.left = box_left + 7 + "px"
             }
             
+            break;
+            case "ArrowLeft" :
+            if(box_left <= 0){
+                alert("넌 못가")
+            } else if(box_left < 7){
+                box.style.left = 0 + "px"
+            } else {
+                box.style.left = box_left - 7 + "px"
+            }
             break;
         }
         

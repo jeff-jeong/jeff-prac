@@ -1,0 +1,126 @@
+document.addEventListener("DOMContentLoaded", function (e) {
+  console.log("로딩 완료!")
+
+  const start_button = document.getElementById("start_game")
+  const screen = document.getElementById("screen")
+
+  let final_random_no
+
+  // 메세지 생성 함수
+  function generate_message(msg, color) {
+    // 메세지를 넣을 div 생성
+    let message = document.createElement("div")
+    // div에 메세지 넣음
+    message.innerHTML = msg
+
+    // className이 존재 한다면 클래스 추가
+    if (color) {
+      message.style.color = color
+    }
+
+    // 그 div를 screen에 넣음
+    screen.appendChild(message)
+  }
+
+  // 숫자 인풋 생성 함수
+  function generate_number_input(position, final_random_no) {
+    // input 생성
+    let input = document.createElement("input")
+    let max_value;
+
+    for (let i = 0; i < position; i++) {
+      if (!max_value) {
+        // console.log("max_value가 존재하지 않음으로 이것은 첫번째 룹 = 이것은 1자리 수 = 최대값이 9")
+        max_value = 9
+      } else {
+        // console.log(`max_value가 존재하고 그 값은 ${max_value}이다. = 이것은 1자리 수 이상이다 = 2자리 수일땐 99, 3자리 수일땐 999 즉 i가 늘어날수록 기존 max_value값에 9의 10에 i승 만큼 더해준다. = 공식은 9 곱하기 10의 i(${i})승 더하기 max_value(${max_value})`)
+        max_value = (9 * Math.pow(10, i)) + max_value
+      }
+    }
+
+    // input에 type을 number로 정의
+    input.setAttribute("type", "number")
+
+    // input에 number_input id 정의
+    input.setAttribute("id", "number_input")
+
+    // input에 number_input min 정의
+    input.setAttribute("min", 0)
+    // input에 number_input max 정의
+    input.setAttribute("max", max_value)
+
+    // Attribute 받아오는 법
+    // console.log(input.getAttribute("max"))
+
+    // screen에 input 넣음
+    screen.appendChild(input)
+
+    // input에 event 리스너 등록
+    input.addEventListener("keyup", function (e) {
+
+      // 엔터키가 눌리면 실행
+      if (e.code == "Enter") {
+        // input 값 저장
+        let input_value = e.target.value
+        // input 값 메세지 생성
+        generate_message(`값 ${input_value} (이)가 입력되었습니다.`)
+        console.log("정답지:", final_random_no)
+        // input값이 final_random_no 보다 클경우
+        if (input_value < final_random_no) {
+          // 에러 방지를 위해 input 삭제
+          input.remove()
+          // 결과 메세지 생성
+          generate_message(`생성된 숫자는 제공된 값 ${input_value} 보다 큽니다.`, "red")
+          // 재도전 메세지 생성
+          generate_message(`다시 도전해보세요.`)
+          // input 생성
+          generate_number_input(position, final_random_no)
+        } else if (input_value > final_random_no) {
+          // 에러 방지를 위해 input 삭제
+          input.remove()
+          // 결과 메세지 생성
+          generate_message(`생성된 숫자는 제공된 값 ${input_value} 보다 작습니다.`, "yellow")
+          // 재도전 메세지 생성
+          generate_message(`다시 도전해보세요.`)
+          // input 생성
+          generate_number_input(position, final_random_no)
+        } else {
+          // 에러 방지를 위해 input 삭제
+          input.remove()
+          // 결과 메세지 생성
+          generate_message(`축하드립니다. 정답은 ${input_value} 입니다.`, "blue")
+          generate_message(`처음부터 시작하시려면 START GAME 버튼을 눌러주세요.`)
+
+        }
+      }
+    })
+  }
+  start_button.addEventListener("click", function (e) {
+    // 스크린 리셋
+    screen.innerHTML = ""
+
+    generate_message("어서오세요. 게임이 실행됩니다.")
+
+    // 랜덤 숫자 생성
+    let random_no = Math.random();
+    // 몇자리수를 원하나
+    let position = 3
+    // 랜덤 숫자 결과값은 랜덤숫자로 일단 시작
+    final_random_no = random_no
+
+    // 자릿수 만큼 랜덤 숫자 결과값에 10을 더해줌
+    for (let i = 0; i < position; i++) {
+      final_random_no = final_random_no * 10
+    }
+    // 이제 final_random_no 는 최대 자릿수 까지의 임의의 숫자가 됨
+    // 소숫점을 떼준다 - 버림(floor), 반올림(round), 올림(ceil)
+    final_random_no = Math.floor(final_random_no)
+
+    generate_message("랜덤 숫자가 생성이 되었습니다. 게임을 시작해주세요.")
+
+    generate_number_input(position, final_random_no)
+    // 테스트용
+    // console.log(final_random_no, Math.floor(final_random_no), Math.round(final_random_no), Math.ceil(final_random_no))
+
+  })
+})
