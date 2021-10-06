@@ -1,26 +1,30 @@
-const form = document.getElementById("form");
-const input = form.querySelector("input");
-const greeting = document.getElementById("greeting");
+const form = document.getElementById("form")
+const input = form.querySelector("input")
+const greeting = document.getElementById("greeting")
 
-function submitHandler(e) {
+const HIDDEN_KEY = "hidden"
+const USERNAME_KEY = "username"
+
+
+function submitHandler(e){
   e.preventDefault();
-  const username = input.value;
+  const username = input.value
+  localStorage.setItem(USERNAME_KEY, username)
+  paintGreeting(username)
 
-  paintGreeting(username);
-
-  localStorage.setItem("username", username);
 }
 
-function paintGreeting(username) {
-  form.classList.add("hidden");
-  greeting.innerText = `Hello ${username}`;
+function paintGreeting(username){
+  greeting.innerText = `Hello ${username}`
+  form.classList.add(HIDDEN_KEY)
 }
 
-const SavedUsername = localStorage.getItem("username");
+const savedName = localStorage.getItem(USERNAME_KEY)
 
-if (SavedUsername === null) {
-  form.classList.remove("hidden");
-  form.addEventListener("submit", submitHandler);
-} else {
-  paintGreeting(SavedUsername);
+if(savedName === null){
+  form.addEventListener("submit", submitHandler)
+
+}else {
+  paintGreeting(savedName)
 }
+
