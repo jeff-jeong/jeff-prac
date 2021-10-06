@@ -1,24 +1,36 @@
-const clock = document.querySelector(".clock");
+const clock = document.getElementById("clock")
 
 
+function tictoc(){
+    const date = new Date();
+    //패드스타트는 스트링에만 적용되니까 받아온 숫자를 스트링으로 변환시켜줌  ()로 펑션 콜을 해준다
+    const hours = String(date.getHours()).padStart(2, "0");
+    const min = String(date.getMinutes()).padStart(2, "0");
+    const sec = String(date.getSeconds()).padStart(2, "0");
+    clock.innerText = `${hours}:${min}:${sec}`;
+}
 
-function tik() {
-    const time = new Date();
-const timeHours = String(time.getHours()).padStart(2, "0");
-const timeMin = String(time.getMinutes()).padStart(2, "0");
-const timeSecond = String(time.getSeconds()).padStart(2, "0");
-    clock.innerHTML = `${timeHours}:${timeMin}:${timeSecond}`;
-};
+tictoc()
+setInterval(tictoc, 1000)
 
+const random = document.getElementById("random")
+const randomName = random.querySelector("span:first-child")
+const randomPrice = random.querySelector("span:last-child")
 
-tik();
-setInterval(tik, 1000);
+const randomData = [
+    //오브젝트 키벨류 키벨류 벨류는 '' 형태로
+    {name:'a', price:'b' },
+    {name:'c', price:'d' },
+    {name:'e', price:'f' },
+    {name:'g', price:'h' },
+    {name:'q', price:'w' },
+]
 
-//막힌부분 인터벌 설정했는데 1초마다 갱신이 안됌 새로고침하면 00:00:00에서 한번 바뀌고 안바뀜
-//해결 = const로 불러온 시간들을 tik 안에 넣어줘야해 갱신될때 같이안에 있어야지
-//padStart의 위치
-//00초가 보일때 일단 ()를 통한 펑션의 즉시실행
+//랜덤데이터에 몇번째껄 가져올까? 랜덤데이터[랜덤숫자]의 형식
+const randomTxt = randomData[Math.floor(Math.random()*randomData.length)]
 
+randomName.innerText = randomTxt.name
+randomPrice.innerText = randomTxt.price
 
 
 

@@ -2,35 +2,38 @@ const clock = document.getElementById("clock")
 
 
 function tictoc(){
-    const date = new Date();
-    //패드스타트는 스트링에만 적용되니까 받아온 숫자를 스트링으로 변환시켜줌  ()로 펑션 콜을 해준다
-    const hours = String(date.getHours()).padStart(2, "0");
-    const min = String(date.getMinutes()).padStart(2, "0");
-    const sec = String(date.getSeconds()).padStart(2, "0");
-    clock.innerText = `${hours}:${min}:${sec}`;
+
+    
+    const date = new Date()
+    
+    const hours = String(date.getHours()).padStart(2, "0")
+    const min = String(date.getMinutes()).padStart(2, "0")
+    const sec = String(date.getSeconds()).padStart(2, "0")
+    
+    clock.innerText = `${hours}:${min}:${sec}`
 }
 
 tictoc()
 setInterval(tictoc, 1000)
 
-const random = document.getElementById("random")
-const randomName = random.querySelector("span:first-child")
-const randomPrice = random.querySelector("span:last-child")
 
-const randomData = [
-    //오브젝트 키벨류 키벨류 벨류는 '' 형태로
-    {name:'a', price:'b' },
-    {name:'c', price:'d' },
-    {name:'e', price:'f' },
-    {name:'g', price:'h' },
-    {name:'q', price:'w' },
+const random = document.getElementById("random")
+const menuSpan = random.querySelector("span:first-child")
+const priceSpan = random.querySelector("span:last-child")
+
+
+const random_data = [
+    {menu:"coffee1", price:"600"},
+    {menu:"coffee2", price:"500"},
+    {menu:"coffee3", price:"400"},
+    {menu:"coffee4", price:"300"},
+    {menu:"coffee5", price:"200"},
+    {menu:"coffee6", price:"100"},
 ]
 
-//랜덤데이터에 몇번째껄 가져올까? 랜덤데이터[랜덤숫자]의 형식
-const randomTxt = randomData[Math.floor(Math.random()*randomData.length)]
+const todaysCoffee = random_data[Math.floor(Math.random()*random_data.length)]
 
-randomName.innerText = randomTxt.name
-randomPrice.innerText = randomTxt.price
-
+menuSpan.innerText = todaysCoffee.menu
+priceSpan.innerText = todaysCoffee.price
 
 
