@@ -1,0 +1,35 @@
+body, html {
+    padding:0;
+    margin:0;
+}
+
+#screen {
+    background-color: #424242;
+    
+}
+.box {
+    width:80px;
+    height:80px;
+    background-color: wheat;
+    margin-bottom: 10px;
+}
+
+.color{
+    background-color: tomato;
+}
+
+.box:last-child {
+    margin-bottom: 0;
+}
+
+.btns{
+    position: fixed;
+    right:0;
+    top:0;
+}
+
+button:active {
+    background-color:yellow;
+    transition: 0.1s;
+    transform:scale(0.95);
+}

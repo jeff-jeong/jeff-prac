@@ -1,36 +1,40 @@
-const form = document.getElementById("form")
-const input = document.getElementById("input")
+    //Oct 07폼 제출을 멈추는 이 형식을 기억해둬~
 
-function notice(content){
-    const msg = document.createElement("div")
-    msg.innerHTML = content
-    form.appendChild(msg)
+const form = document.getElementById("form")
+const input = form.querySelector("input")
+const notice = document.getElementById("notice")
+
+
+function generateMessage(msg){
+  const message = document.createElement("div")
+  message.innerText = msg
+  notice.appendChild(message)
 }
 
 
-form.addEventListener("submit", function(e){
-    //폼 제출을 멈추는 이 형식을 기억해둬~
-    e.preventDefault();
 
-    const input_value = parseInt(input.value)
-
-    console.log(input_value)
-
-    if(isNaN(input_value) || input_value < 0){
-        notice("숫자를 제대로 입력해주세요")
-        input.value = ""
-    } else if (input_value < 20) {
-        notice("미성년자는 꺼지시오")
-        input.value = ""
+function submitHandler(e){
+    e.preventDefault()
+    const userAge = input.value
+    input.value = ""
+    if(isNaN(userAge) || userAge < 0){
+      notice.innerHTML = ""
+      generateMessage("숫자를 똑바로입력해 임마")
+    } else if (userAge < 20){
+      notice.innerHTML = ""
+      generateMessage("미성년자는 가라")
+    } else if(userAge > 100){
+      notice.innerHTML = ""
+      generateMessage("장례식장으로 모시겠습니다")
     } else {
-        notice("어서오세요 고객님")
-        input.value = ""
+      notice.innerHTML = ""
+      generateMessage("어서오세요 고갱님")
     }
-})
+
+}
 
 
 
-
-
+form.addEventListener("submit", submitHandler)
 
 

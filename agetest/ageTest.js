@@ -1,24 +1,39 @@
-const form = document.getElementById("form");
-const input = document.getElementById("input");
 
-form.addEventListener("submit", function (e) {
-  e.preventDefault();
+const form = document.getElementById("form")
+const input = form.querySelector("input")
+const notice = document.getElementById("notice")
 
-  const age = parseInt(input.value);
 
-  if (isNaN(age) || age < 0) {
-    alert("제대로된 나이를 적으시오");
-  } else if (age < 18) {
-    const alret = document.createElement("div");
+function generateMessage(msg){
+  const message = document.createElement("div")
+  message.innerText = msg
+  notice.appendChild(message)
+}
 
-    alret.textContent = "어린놈의 샛갸 꺼져";
-    input.value = "";
-    form.appendChild(alret);
-  } else {
-    const alret = document.createElement("div");
 
-    alret.textContent = "어서오세요 고갱님";
-    input.value = "";
-    form.appendChild(alret);
-  }
-});
+
+function submitHandler(e){
+    e.preventDefault()
+    const userAge = input.value
+    input.value = ""
+    if(isNaN(userAge) || userAge < 0){
+      notice.innerHTML = ""
+      generateMessage("숫자를 똑바로입력해 임마")
+    } else if (userAge < 20){
+      notice.innerHTML = ""
+      generateMessage("미성년자는 가라")
+    } else if(userAge > 100){
+      notice.innerHTML = ""
+      generateMessage("장례식장으로 모시겠습니다")
+    } else {
+      notice.innerHTML = ""
+      generateMessage("어서오세요 고갱님")
+    }
+
+}
+
+
+
+form.addEventListener("submit", submitHandler)
+
+

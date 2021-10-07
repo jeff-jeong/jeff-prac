@@ -1,3 +1,9 @@
+//oct06 원하는 결과물을 얻긴 얻었는데 너무 어렵게 만들었나보다
+
+
+'use strict'
+
+
 const content = document.getElementById("content");
 const userScreen = content.querySelector("div:first-child");
 const userScreenWidth = userScreen.querySelector("span:first-child");
