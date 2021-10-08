@@ -1,0 +1,39 @@
+*{
+    box-sizing: border-box;
+}
+
+body, html {
+    width:100%;
+    height:600vh;
+    margin:0;
+    padding:0;
+}
+
+#screen {
+    background-color: #424242;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+
+
+}
+
+.box {
+    width:100px;
+    height:100px;
+    background-color: royalblue;
+    margin-bottom:15px;
+    
+}
+
+.color {
+    background-color: sienna;
+}
+
+.btns {
+    position: fixed;
+    top:0;
+    right:0;
+    
+}

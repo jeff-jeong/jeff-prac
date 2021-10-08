@@ -1,0 +1,105 @@
+*{
+    box-sizing: border-box;
+}
+
+body, html {
+    margin:0;
+    padding:0;
+    height:100vh;
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FAEEE0;
+}
+
+
+#app {
+    
+    width:300px;
+    height:500px;
+    background-color: #F9CF93;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space;
+    
+    border-radius: 10px;
+    filter: drop-shadow(10px 10px 4px #DBD0C0);
+    
+
+}
+
+header {
+    color:white;
+    text-align: center;
+    padding:10px 0;
+    font-size:20px;
+}
+
+footer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main {
+    height:100%;
+    background-color: whitesmoke;
+    position: relative;
+
+}
+
+input {
+    all:unset;
+    position: absolute;
+    bottom:0;
+    background-color: sandybrown;
+    padding:15px 10px;
+    width: 100%;
+    box-sizing: border-box;
+    
+    
+}
+
+input::placeholder{
+    color:#757575;
+}
+
+footer {
+    padding:10px 0;
+}
+
+button {
+    all:unset;
+    border:sandybrown 1px solid;
+    padding:0 5px;
+    cursor: pointer;
+}
+
+.addBtn {
+    all:unset;
+    width:30px;
+    height:30px;
+    background-color: #90AACB;
+    border-radius: 50%;
+    color:white;
+    font-size:30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#list {
+    padding: 0 10px;
+}
+
+.itemList{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom:15px;
+    color:#FFB085;
+    font-size:20px;
+}
