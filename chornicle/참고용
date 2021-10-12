@@ -1,0 +1,82 @@
+document.addEventListener("DOMContentLoaded", (e) => {
+  // 로딩 완료 로그
+  console.log("Loaded")
+
+  // 이벤트 임의로 정의
+  const events = [
+    { name: "위덕스 프로젝트 2", date: "01/06/2022" },
+    { name: "위덕스 프로젝트 4", date: "03/11/2022" },
+    { name: "위덕스 창립", date: "01/01/2022" },
+    { name: "위덕스 프로젝트 5", date: "04/05/2022" },
+    { name: "위덕스 프로젝트 7", date: "07/09/2022" },
+    { name: "위덕스 프로젝트 3", date: "02/23/2022" },
+    { name: "위덕스 프로젝트 6", date: "06/15/2022" },
+    { name: "위덕스 프로젝트 9", date: "11/30/2022" },
+    { name: "위덕스 프로젝트 1", date: "01/03/2022" },
+    { name: "위덕스 프로젝트 8", date: "08/20/2022" },
+    { name: "위덕스 프로젝트 10", date: "12/31/2022" },
+  ]
+
+  // 스크린 불러오기
+  const screen = document.getElementById("screen")
+  const filter_latest = document.getElementById("filter_latest")
+  const filter_oldest = document.getElementById("filter_oldest")
+
+  // 리스트 생성
+  const create_list = (events, sort_type) => {
+    // 리스트 div생성
+    let list = document.createElement("div")
+
+    // list라는 클래스를 리스트 div에 추가
+    list.classList.add("list")
+
+    // 스크린에 리스트 넣음
+    screen.appendChild(list)
+
+    // 리스트에 들어갈 이벤트를 sort_type에 따라 재정렬
+    switch (sort_type) {
+      case "latest":
+
+
+        // 이벤트 array를 sort하는데 sort가 받는 콜백함수는
+        events.sort((current, next) => {
+          // Date클래스에 array의 현재 아이템의 date를 넣고 getTime()으로 Timestamp를 획득 : Timestamp는 최신일수록 값이 크다
+          let current_date = new Date(current.date).getTime()
+          // Date 클래스에 array의 다음 아이템의 date를 넣고 getTime()으로 Timestamp를 획득
+          let next_date = new Date(next.date).getTime()
+
+          // sort가 받아오는 함수의 return값이 0보다 크면 next가 current앞으로 배치, 0보다 작으면 current가 next 앞으로 배치, 0과 같으면 유지
+          // next_date - current_date 가 0보다 크다 == 다음 아이템이 최신 == array에서 현재 아이템 앞으로 배치
+          return next_date - current_date
+        })
+        break;
+      case "oldest":
+        events.sort((current, next) => {
+          let current_date = new Date(current.date).getTime()
+          let next_date = new Date(next.date).getTime()
+
+          return current_date - next_date
+        })
+        break;
+      default:
+
+        break;
+    }
+
+    for (const event of events) {
+      let list_item = document.createElement("div")
+      list_item.innerHTML = `<div>${event.name}</div><div>${event.date}</div>`
+      list.appendChild(list_item)
+    }
+  }
+  create_list(events)
+
+  filter_latest.addEventListener("click", (e) => {
+    screen.innerHTML = ""
+    create_list(events, "latest")
+  })
+  filter_oldest.addEventListener("click", (e) => {
+    screen.innerHTML = ""
+    create_list(events, "oldest")
+  })
+})
