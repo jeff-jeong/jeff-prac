@@ -1,40 +1,32 @@
-    //Oct 07폼 제출을 멈추는 이 형식을 기억해둬~
-
 const form = document.getElementById("form")
-const input = form.querySelector("input")
-const notice = document.getElementById("notice")
+const input = document.querySelector("input")
+const notice = document.querySelector("#notice")
 
 
-function generateMessage(msg){
-  const message = document.createElement("div")
-  message.innerText = msg
-  notice.appendChild(message)
+const greeting = (text) => {
+  notice.innerText = text
 }
 
 
-
-function submitHandler(e){
-    e.preventDefault()
-    const userAge = input.value
-    input.value = ""
-    if(isNaN(userAge) || userAge < 0){
-      notice.innerHTML = ""
-      generateMessage("숫자를 똑바로입력해 임마")
-    } else if (userAge < 20){
-      notice.innerHTML = ""
-      generateMessage("미성년자는 가라")
-    } else if(userAge > 100){
-      notice.innerHTML = ""
-      generateMessage("장례식장으로 모시겠습니다")
-    } else {
-      notice.innerHTML = ""
-      generateMessage("어서오세요 고갱님")
-    }
-
+function checkAge(age){
+  console.log(age)
+  if(isNaN(age) || age < 0 ){
+    greeting("올바른 나이를 입력하세요")
+  } else if (age < 20){
+    greeting("미성년자는 꺼져라")
+  } else if (age > 100){
+    greeting("무덤이나 가쇼")
+  } else {
+    greeting("고객님 환영합니다")
+  }
+  
 }
 
 
-
-form.addEventListener("submit", submitHandler)
-
-
+form.addEventListener("submit", (e)=>{
+  e.preventDefault()
+  const age = input.value
+  input.value = ""
+  input.focus()
+  checkAge(age)
+})
