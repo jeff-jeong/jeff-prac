@@ -34,6 +34,7 @@ gameFinishBanner.setClickListener(()=>{
     startGame()
 })
 
+const gameField = new Filed()
 
 
 
@@ -139,17 +140,7 @@ function onFieldClick(event) {
         return
     }
     //
-    const target = event.target
-    if(target.matches(".carrot")){
-        target.remove()
-        score++
-        updateScoreBoard()
-        if(score === CARROT_COUNT){
-            finishGame(true)
-        }
-    } else if(target.matches(".bug")){
-        finishGame(false)
-    }
+    
 }
 
 

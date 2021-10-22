@@ -17,6 +17,10 @@ export default class Filed{
 
     }
 
+    setClickListener(onItemClick){
+        this.onItemClick = onItemClick
+    }
+
     _addItem(className, count, imgPath) {
         const x1 = 0
         const y1 = 0
@@ -38,6 +42,13 @@ export default class Filed{
 }
 
     onclick(event) {
-
+        const target = event.target
+        if(target.matches(".carrot")){
+            target.remove()
+            this.onItemClick && this.onItemClick('carrot')
+        } else if(target.matches(".bug")){
+            finishGame(false)
+            this.onItemClick && this.onItemClick('bug')
+        }
     }
 }
