@@ -141,3 +141,19 @@ function count(text){
 }
 
 count('aaappelsleaf')
+
+class Mchn {
+    constructor(a, b) {
+        this.name = a;
+        this.price = b;
+        this.money = function () {
+            console.log(this.price * 0.1);
+        };
+    }
+}
+
+let product = new Mchn('shirts', 50000)
+
+console.log(product.money())
+
+
